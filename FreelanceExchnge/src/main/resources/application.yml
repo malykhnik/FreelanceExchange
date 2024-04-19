@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: FreelanceExchange
+  datasource:
+    url: jdbc:postgresql://localhost:5432/freelance_exchange
+    password: postgres
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+        javax:
+          persistence:
+            schema-generation:
+              scripts:
+                create-target: C:\Users\shere\IdeaProjects\TechnicalTask\src\main\resources\sql_scripts\createTable.sql
