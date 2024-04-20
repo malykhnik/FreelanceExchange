@@ -11,28 +11,24 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="users")
 public class User {
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
-    @Column(name = "username", unique = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String username;
 
-    @Column(name = "password")
     private String password;
 
-    @Column(name="name")
     private String name;
 
-    @Column(name="tel_number")
-    private String telNumber;
+    @Column(name = "tel_number")
+    private String phoneNumber;
 
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Order> orders;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<FreelanceAnnouncement> frAnnouns;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

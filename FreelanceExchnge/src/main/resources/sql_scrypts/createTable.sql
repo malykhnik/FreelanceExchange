@@ -1,5 +1,5 @@
 -- Создание таблицы users
-CREATE TABLE users
+CREATE TABLE if not exists users
 (
     id         SERIAL PRIMARY KEY,
     username   VARCHAR(255) UNIQUE,
@@ -11,7 +11,7 @@ CREATE TABLE users
 );
 
 -- Создание таблицы orders
-CREATE TABLE orders
+CREATE TABLE if not exists orders
 (
     id          SERIAL PRIMARY KEY,
     user_id     INTEGER,
@@ -22,7 +22,7 @@ CREATE TABLE orders
 );
 
 -- Создание таблицы Freelance_announcement
-CREATE TABLE freelance_announcement
+CREATE TABLE if not exists freelance_announcement
 (
     id          SERIAL PRIMARY KEY,
     description TEXT,
@@ -31,7 +31,7 @@ CREATE TABLE freelance_announcement
 );
 
 -- Создание таблицы roles
-CREATE TABLE roles
+CREATE TABLE if not exists roles
 (
     id        SERIAL PRIMARY KEY,
     role_name VARCHAR(50)

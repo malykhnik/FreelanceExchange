@@ -1,17 +1,21 @@
 package com.malykhnik.freelanceexchnge.controller;
 
 import com.malykhnik.freelanceexchnge.model.Order;
+import com.malykhnik.freelanceexchnge.service.impls.OrderServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
+@AllArgsConstructor
 public class OrderController {
+
+    private final OrderServiceImpl orderService;
+
     @RequestMapping("/")
     public String hello(@RequestParam(required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
@@ -20,14 +24,21 @@ public class OrderController {
 
     @GetMapping("/getAllOrders")
     public String showAllOrders(Model model) {
+        ArrayList<Order> ordersList = (ArrayList<Order>) orderService.getAllOrders();
+        model.addAttribute("orders", ordersList);
         model.addAttribute("user_role", "customer");
         return "all_orders";
     }
 
     @GetMapping("/newOrder")
-    public String createNewOrder(Map<String, Object> model) {
-        Order order = new Order();
-        model.put("newOrder", order);
+    public String createNewOrder(Model model) {
+        model.addAttribute("order", new Order());
         return "new_order";
+    }
+
+    @PostMapping("/save")
+    public String saveNewOrder(@ModelAttribute("newOrder") Order order) {
+        orderService.saveNewOrder(order);
+        return "redirect:/getAllOrders";
     }
 }

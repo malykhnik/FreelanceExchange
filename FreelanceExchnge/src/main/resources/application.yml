@@ -8,7 +8,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     jpa:
       hibernate:
-        ddl-auto: update
+        ddl-auto: create
       database: postgresql
       database-platform: org.hibernate.dialect.PostgreSQLDialect
       show-sql: true
@@ -20,3 +20,7 @@ spring:
             schema-generation:
               scripts:
                 create-target: C:\Users\shere\IdeaProjects\TechnicalTask\src\main\resources\sql_scripts\createTable.sql
+#server:
+#  error:
+#    whitelabel:
+#      enabled: false

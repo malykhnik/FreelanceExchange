@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>New Order</title>
     <link rel="stylesheet" type="text/css" href="/static/css/new_order_css.css"/>
 </head>
 <body>
-
-<form:form action="/save" method="post" modelAttribute="newOrder">
+<form action="/save" method="post" modelAttribute="order">
     <table border="1" cellpadding="5">
         <tr>
             <td>Имя заказа: </td>
-            <td><form:input path="orderName" /></td>
+            <td><input path="orderName"/></td>
         </tr>
-        <tr>
-            <td>Имя заказчика: </td>
-            <td><form:input path="name" /></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>Имя заказчика: </td>-->
+<!--            <td><input type="text" th:field="*{user.name}" /></td>-->
+<!--        </tr>-->
         <tr>
             <td>Описание: </td>
-            <td><form:input path="description" /></td>
+            <td><input path="description"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Save"></td>
         </tr>
     </table>
-</form:form>
+</form>
 
 </body>
 </html>
