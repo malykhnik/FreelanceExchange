@@ -5,20 +5,25 @@
     <title>New Order</title>
     <link rel="stylesheet" type="text/css" href="/static/css/new_order_css.css"/>
 </head>
+
 <body>
-<form action="/save" method="post" modelAttribute="order">
+<div class="main_info">
+    <a href="/getAllOrders">
+        <img class="logo" src="/images/logo.jpg">
+        <span class="logo_name">Freelance Exchange</span>
+    </a>
+    <span class="my_role" th:text="${user_role}"></span>
+</div>
+
+<form th:method="POST" th:action="@{/save}" th:object="${order}">
     <table border="1" cellpadding="5">
         <tr>
-            <td>Имя заказа: </td>
-            <td><input path="orderName"/></td>
+            <td>Название заказа: </td>
+            <td><input type="text" th:field="*{orderName}"/></td>
         </tr>
-<!--        <tr>-->
-<!--            <td>Имя заказчика: </td>-->
-<!--            <td><input type="text" th:field="*{user.name}" /></td>-->
-<!--        </tr>-->
         <tr>
             <td>Описание: </td>
-            <td><input path="description"/></td>
+            <td><input type="text" th:field="*{description}"/></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Save"></td>

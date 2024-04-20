@@ -24,6 +24,18 @@
     right: 5%;
 }
 
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:active {
+    color: black;
+}
+
 .container {
     display: flex;
     height: 100vh;
@@ -48,6 +60,13 @@ a {
     text-decoration: none;
 }
 
+li {
+    list-style-type: none;
+}
+ul {
+    list-style-type:  none;
+}
+
 .new_order_span {
     font-size: 20px;
     background-color: green;
@@ -60,3 +79,18 @@ a {
     height: 100%;
 }
 
+td:nth-child(1) {
+    width: 100px;
+}
+td:nth-child(2) {
+    width: 200px;
+}
+td:nth-child(3) {
+    width: 150px;
+}
+td:nth-child(4) {
+    width: 250px;
+}
+td:nth-child(5) {
+    width: 100px;
+}

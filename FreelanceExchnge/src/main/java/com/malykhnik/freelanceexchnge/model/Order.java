@@ -24,5 +24,6 @@ public class Order {
 
     private String description;
 
-    private String status;
+    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'Active'")
+    private String status = "Active";
 }

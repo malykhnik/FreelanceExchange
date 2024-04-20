@@ -14,4 +14,9 @@ public class MVCConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("classpath:/static/js/");
     }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/templates/", ".jsp");
+    }
 }

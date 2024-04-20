@@ -1,4 +1,14 @@
--- Создание таблицы users
+drop table freelance_announcement;
+drop table orders;
+drop table users;
+drop table roles;
+
+CREATE TABLE if not exists roles
+(
+    id        SERIAL PRIMARY KEY,
+    role_name VARCHAR(50)
+);
+
 CREATE TABLE if not exists users
 (
     id         SERIAL PRIMARY KEY,
@@ -10,7 +20,6 @@ CREATE TABLE if not exists users
     FOREIGN KEY (role_id) REFERENCES roles (id)
 );
 
--- Создание таблицы orders
 CREATE TABLE if not exists orders
 (
     id          SERIAL PRIMARY KEY,
@@ -21,18 +30,10 @@ CREATE TABLE if not exists orders
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
--- Создание таблицы Freelance_announcement
 CREATE TABLE if not exists freelance_announcement
 (
     id          SERIAL PRIMARY KEY,
     description TEXT,
     user_id     INTEGER,
     FOREIGN KEY (user_id) REFERENCES users (id)
-);
-
--- Создание таблицы roles
-CREATE TABLE if not exists roles
-(
-    id        SERIAL PRIMARY KEY,
-    role_name VARCHAR(50)
 );

@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -26,6 +25,8 @@ public class OrderController {
     public String showAllOrders(Model model) {
         ArrayList<Order> ordersList = (ArrayList<Order>) orderService.getAllOrders();
         model.addAttribute("orders", ordersList);
+        //передать в модель имя текущего авторизованного пользователя и передать
+        model.addAttribute("username", "Nikita");
         model.addAttribute("user_role", "customer");
         return "all_orders";
     }
@@ -33,11 +34,12 @@ public class OrderController {
     @GetMapping("/newOrder")
     public String createNewOrder(Model model) {
         model.addAttribute("order", new Order());
+        model.addAttribute("user_role", "customer");
         return "new_order";
     }
 
     @PostMapping("/save")
-    public String saveNewOrder(@ModelAttribute("newOrder") Order order) {
+    public String saveNewOrder(@ModelAttribute("order") Order order, Model model) {
         orderService.saveNewOrder(order);
         return "redirect:/getAllOrders";
     }
