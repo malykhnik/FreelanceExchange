@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>Регистрация</title>
@@ -8,7 +8,7 @@
 <body>
 <div>
     <form th:method="POST" th:action="@{/registration}" th:object="${userForm}">
-        <h2>Регистрация</h2>
+        <h1>Регистрация</h1>
         <div>
             <input type="text" th:field="*{username}" placeholder="Username"
                         autofocus="true">

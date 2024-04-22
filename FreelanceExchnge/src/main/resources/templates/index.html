@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
 </head>
 <body>
 
-<p th:text="'Hello ' + ${name} + '!'"></p>
+<div class="main_info">
+    <img class="logo" src="/images/logo.jpg">
+    <span class="logo_name">Freelance Exchange</span>
+    <span class="my_role" th:text="${user_role}"></span>
+</div>
 
 </body>
 </html>

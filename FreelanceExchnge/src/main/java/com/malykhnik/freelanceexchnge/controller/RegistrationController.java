@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegistrationController {
 
     private final UserService userService;
-    private final AuthenticationManager authenticationManager;
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -46,12 +45,8 @@ public class RegistrationController {
             return "registration";
         } else {
             userService.saveUser(userForm);
-//            UsernamePasswordAuthenticationToken authToken =
-//                    new UsernamePasswordAuthenticationToken(userForm.getUsername(), userForm.getPassword());
-//            Authentication authentication = authenticationManager.authenticate(authToken);
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        return "redirect:/getAllOrders";
+        return "redirect:/login";
     }
 }

@@ -42,16 +42,15 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return  http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("getAllOrders").permitAll() //вход без авторизации
-                        .requestMatchers("newOrder/**").authenticated()
-                        .anyRequest().permitAll())
+                .authorizeHttpRequests(auth -> auth.requestMatchers("registration").permitAll()
+                        .requestMatchers("login").permitAll()
+                        .anyRequest().authenticated())
 
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-//                .formLogin(form -> form
-//                        .loginPage("/registration") // URL для страницы входа
-//                        .defaultSuccessUrl("/getAllOrders")
-//                        .permitAll()
-//                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/getAllOrders", true)
+                        .permitAll()
+                )
 //                .logout(logout -> logout
 //                        .logoutUrl("redirect:/logout") // URL для выхода
 //                        .permitAll()

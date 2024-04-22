@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder encoder;
 
-    public void saveUser(User user) {
+    public boolean saveUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            return;
+            return false;
         }
 
         Role role = new Role("NO_ROLE");
@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(role);
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
+        return false;
     }
 
     public User findByUsername(String username) {

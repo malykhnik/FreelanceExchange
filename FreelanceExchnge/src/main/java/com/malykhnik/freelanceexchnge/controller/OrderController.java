@@ -16,8 +16,8 @@ public class OrderController {
     private final OrderServiceImpl orderService;
 
     @RequestMapping("/")
-    public String hello(@RequestParam(required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String hello(Model model) {
+        model.addAttribute("user_role", "Nikita");
         return "index";
     }
 
