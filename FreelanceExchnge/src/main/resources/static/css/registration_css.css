@@ -80,7 +80,7 @@ input[type="radio"] {
 
 /* Стилизация при выборе */
 input[type="radio"]:checked {
-    background-color: #c2f0c2; /* Светло-зеленый фон при выборе */
+    background-color: #19c410; /* Светло-зеленый фон при выборе */
     border-color: green;      /* Зеленая граница при выборе */
 }
 
@@ -95,4 +95,16 @@ label {
 span {
     font-size: 15px;
     font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #3e8e41; /* Темно-зеленый цвет при наведении */
+}
+
+input[type="button"]:hover {
+    background-color: #3e8e41; /* Темно-зеленый цвет при наведении */
+}
+
+input[type="radio"]:hover {
+    background-color: #c2f0c2; /* Темно-зеленый цвет при наведении */
 }

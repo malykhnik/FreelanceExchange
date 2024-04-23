@@ -29,8 +29,8 @@ public class OrderController {
         model.addAttribute("orders", ordersList);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String role = authentication.getAuthorities().iterator().next().getAuthority();
-        model.addAttribute("user_role", role);
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
 
         return "all_orders";
     }
@@ -39,13 +39,13 @@ public class OrderController {
     public String createNewOrder(Model model) {
         model.addAttribute("order", new Order());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String role = authentication.getAuthorities().iterator().next().getAuthority();
-        model.addAttribute("user_role", role);
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
         return "new_order";
     }
 
     @PostMapping("/save")
-    public String saveNewOrder(@ModelAttribute("order") Order order, Model model) {
+    public String saveNewOrder(@ModelAttribute("order") Order order) {
         orderService.saveNewOrder(order);
         return "redirect:/getAllOrders";
     }

@@ -10,14 +10,20 @@
 <div class="main_info">
     <img class="logo" src="/images/logo.jpg">
     <span class="logo_name">Freelance Exchange</span>
-    <span class="my_role" th:text="${user_role}"></span>
-    <a href="/logout"><img class="logout" src="/images/logout.png"></a>
+    <div class="name_and_logout">
+        <span class="my_role" th:text="${user_name}"></span>
+        <a href="/logout"><img class="logout" src="/images/logout.png"></a>
+    </div>
 </div>
 
 <div class="container">
     <div class="left_block">
-        <div class="new_order">
+        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
             <a class="new_order_span" href="/newOrder">Новый заказ</a>
+        </div>
+
+        <div class="new_service" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
+            <a class="new_service_span" href="/newService">Новая услуга</a>
         </div>
     <h2>Список заказов:</h2>
     <ul>

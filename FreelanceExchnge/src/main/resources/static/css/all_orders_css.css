@@ -12,27 +12,26 @@
 }
 
 .logout {
-    position: absolute;
-    right: 0;
-    top: 10%;
     width: 25px;
     height: 25px;
-    margin-right: 20px;
+}
+
+.my_role {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.name_and_logout {
+    top: 5%;
+    position: absolute;
+    right: 1%;
 }
 
 .logo_name {
     font-size: 50px;
     position: absolute;
     top: -7%
-}
-
-.my_role {
-    font-size: 25px;
-    font-weight: bold;
-    position: absolute;
-    top: 15%;
-    right: 10%;
-    margin-right: 5px;
 }
 
 a:hover {
@@ -60,6 +59,14 @@ a:active {
 }
 
 .new_order {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    width: 25vh;
+    height: 4vh;
+}
+
+.new_service_span {
     position: absolute;
     right: 2%;
     top: 2%;

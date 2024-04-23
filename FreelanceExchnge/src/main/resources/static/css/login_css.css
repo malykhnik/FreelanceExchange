@@ -38,6 +38,10 @@
     background-color: #45a049;
 }
 
+.login_form input[type="button"]:hover {
+    background-color: #45a049;
+}
+
 .sbm1 {
     margin-right: 17px;
 }
