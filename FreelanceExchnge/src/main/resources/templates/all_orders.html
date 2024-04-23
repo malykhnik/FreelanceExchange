@@ -11,6 +11,7 @@
     <img class="logo" src="/images/logo.jpg">
     <span class="logo_name">Freelance Exchange</span>
     <span class="my_role" th:text="${user_role}"></span>
+    <a href="/logout"><img class="logout" src="/images/logout.png"></a>
 </div>
 
 <div class="container">
@@ -29,7 +30,6 @@
                         <td><span th:text="${order.orderName}"></span></td>
                         <td><span th:text="${order.description}"></span></td>
                         <td><span th:text="${order.status}"></span></td>
-                        <td><span th:text="${order.user.role.roleName}"></span></td>
                     </tr>
                 </table>
             </div>

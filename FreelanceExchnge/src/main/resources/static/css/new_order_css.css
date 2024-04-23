@@ -11,11 +11,30 @@
     margin-right: 50px;
 }
 
+.logout {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+
 .logo_name {
     font-size: 50px;
     position: absolute;
     top: -7%
 }
+
+.my_role {
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    margin-right: 5px;
+}
+
 
 a:hover {
     color: black;
@@ -27,11 +46,4 @@ a:visited {
 
 a:active {
     color: black;
-}
-
-.my_role {
-    font-size: 30px;
-    position: absolute;
-    top: 10%;
-    right: 5%;
 }

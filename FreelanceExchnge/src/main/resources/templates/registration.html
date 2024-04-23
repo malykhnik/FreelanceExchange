@@ -3,28 +3,54 @@
 <head>
     <meta charset="utf-8">
     <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/registration_css.css"/>
 </head>
 
 <body>
-<div>
+<div class="login_form">
     <form th:method="POST" th:action="@{/registration}" th:object="${userForm}">
         <h1>Регистрация</h1>
-        <div>
+        <div class="username_field">
             <input type="text" th:field="*{username}" placeholder="Username"
-                        autofocus="true">
-            <span th:text="${usernameError}"></span>
+                        autofocus="true" required>
         </div>
-        <div>
-            <input type="password" th:field="*{password}" placeholder="Password">
-            <span th:text="${passwordError}"></span>
+        <div class="confirm_name_field">
+            <input type="text" th:field="*{name}"
+                   placeholder="Your name" required>
         </div>
-        <div>
+        <div class="confirm_password_field">
+            <input type="tel" th:field="*{phoneNumber}"
+                   placeholder="Your telephone number" required>
+        </div>
+        <div class="password_field">
+            <input type="password" th:field="*{password}" placeholder="Password" required>
+        </div>
+        <div class="confirm_password_field">
             <input type="password" th:field="*{passwordConfirm}"
-                        placeholder="Confirm your password">
+                        placeholder="Confirm your password" required>
         </div>
-        <input type="submit" value="SIGN UP">
+
+        <div class="select_role">
+            <div>
+                <input type="radio" th:field="*{role}" th:value="CUSTOMER" id="customerRadio" required>
+                <label for="customerRadio"><span>Customer</span></label>
+            </div>
+            <div>
+                <input type="radio" th:field="*{role}" th:value="FREELANCER" id="freelancerRadio" required>
+                <label for="freelancerRadio"><span>Freelancer</span></label>
+            </div>
+        </div>
+
+        <input type="submit" value="Sign Up">
+        <input class="sbm1" type="button" value="Sign In" onclick="func()"/>
+        <script>
+            function func() {
+                window.location.replace("/login");
+            }
+        </script>
     </form>
-    <a href="/getAllOrders">Главная</a>
+    <span th:text="${usernameError}"></span>
+    <span th:text="${passwordError}"></span>
 </div>
 
 </body>

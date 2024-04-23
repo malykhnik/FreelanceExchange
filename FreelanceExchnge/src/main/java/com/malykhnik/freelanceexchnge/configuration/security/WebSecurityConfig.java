@@ -15,11 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.*;
-
-
 
 @Configuration
 @EnableWebSecurity
@@ -44,17 +41,18 @@ public class WebSecurityConfig {
         return  http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers("registration").permitAll()
                         .requestMatchers("login").permitAll()
+                        .requestMatchers("/static/css/*.css").permitAll()
+                        .requestMatchers("/static/images/*").permitAll()
                         .anyRequest().authenticated())
-
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/getAllOrders", true)
                         .permitAll()
                 )
-//                .logout(logout -> logout
-//                        .logoutUrl("redirect:/logout") // URL для выхода
-//                        .permitAll()
-//                )
+                .logout(logout -> logout
+                        .logoutUrl("redirect:/logout")
+                        .permitAll()
+                )
                 .build();
     }
 

@@ -34,7 +34,6 @@ public class User{
     @Column(name = "tel_number")
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Role role;
+    private String role;
 
 }
