@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Order</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/new_order_css.css"/>
+    <title>New Announcement</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/new_announcement_css.css"/>
 </head>
 
 <body>
@@ -15,12 +15,12 @@
     <span class="my_role" th:text="${user_name}"></span>
 </div>
 
-<div class="form_new_order">
-    <form th:method="POST" th:action="@{/save}" th:object="${order}">
+<div class="form_new_announcment">
+    <form th:method="POST" th:action="@{/save}" th:object="${announcement}">
         <table border="1" cellpadding="5">
             <tr>
                 <td>Название заказа:</td>
-                <td><input type="text" th:field="*{orderName}"/></td>
+                <td><input type="text" th:field="*{name}"/></td>
             </tr>
             <tr>
                 <td>Описание:</td>

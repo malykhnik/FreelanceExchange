@@ -16,7 +16,7 @@ class LoginController {
 
     @PostMapping("/login")
     public String loginAndGo() {
-        return "redirect:/all_orders";
+        return "redirect:/getMainPage";
     }
 
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main_page_css.css"/>
+</head>
+<body>
+
+<div class="main_info">
+    <img class="logo" src="/images/logo.jpg">
+    <span class="logo_name">Freelance Exchange</span>
+    <div class="name_and_logout">
+        <span class="my_role" th:text="${user_name}"></span>
+        <a href="/logout"><img class="logout" src="/images/logout.png"></a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="left_block">
+        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
+            <a class="new_order_span" href="/newOrder">Новый заказ</a>
+        </div>
+
+        <div class="new_service" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
+            <a class="new_service_span" href="/newService">Новая услуга</a>
+        </div>
+    <h2>Список заказов:</h2>
+    <ul>
+        <li th:each="order : ${orders}">
+            <div class="product">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <td><span th:text="${order.id}"></span></td>
+                        <td><span th:text="${order.user.username}"></span></td>
+                        <td><span th:text="${order.orderName}"></span></td>
+                        <td><span th:text="${order.description}"></span></td>
+                        <td><span th:text="${order.status}"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    </div>
+    <div class="right_block"></div>
+</div>
+
+</body>
+</html>

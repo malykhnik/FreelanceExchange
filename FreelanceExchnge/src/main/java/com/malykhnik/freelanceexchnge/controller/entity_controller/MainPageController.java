@@ -7,27 +7,26 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 
 @Controller
 @AllArgsConstructor
-public class OrderController {
+public class MainPageController {
+
     private final OrderServiceImpl orderService;
 
-    @GetMapping("/newOrder")
-    public String createNewOrder(Model model) {
-        model.addAttribute("order", new Order());
+
+    @GetMapping("/getMainPage")
+    public String showAllOrders(Model model) {
+        ArrayList<Order> ordersList = (ArrayList<Order>) orderService.getAllOrders();
+        model.addAttribute("orders", ordersList);
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
         model.addAttribute("user_name", name);
-        return "new_order";
-    }
 
-    @PostMapping("/save")
-    public String saveNewOrder(@ModelAttribute("order") Order order) {
-        orderService.saveNewOrder(order);
-        return "redirect:/getMainPage";
+        return "main_page";
     }
 }
