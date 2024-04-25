@@ -16,10 +16,10 @@
     </div>
     <form th:action="@{/login}" method="post">
         <div>
-            <input type="text" name="username" placeholder="Username"/>
+            <input type="text" name="username" placeholder="Username" required/>
         </div>
         <div>
-            <input type="password" name="password" placeholder="Password"/>
+            <input type="password" name="password" placeholder="Password" required/>
         </div>
         <input class="sbm1" type="submit" value="Log in"/>
         <input class="sbm2" type="button" value="Sign Up" onclick="func()"/>

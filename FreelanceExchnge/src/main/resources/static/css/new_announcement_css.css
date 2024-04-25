@@ -12,12 +12,20 @@
 }
 
 .logout {
-    position: absolute;
-    right: 0;
-    top: 10%;
     width: 25px;
     height: 25px;
-    margin-right: 20px;
+}
+
+.my_role {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.name_and_logout {
+    top: 5%;
+    position: absolute;
+    right: 1%;
 }
 
 .logo_name {
@@ -26,13 +34,22 @@
     top: -7%
 }
 
-.my_role {
-    font-size: 25px;
-    font-weight: bold;
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
     position: absolute;
-    top: 15%;
-    right: 10%;
-    margin-right: 5px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 

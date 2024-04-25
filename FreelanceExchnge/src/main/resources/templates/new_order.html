@@ -12,7 +12,15 @@
         <img class="logo" src="/images/logo.jpg">
         <span class="logo_name">Freelance Exchange</span>
     </a>
-    <span class="my_role" th:text="${user_name}"></span>
+    <div class="name_and_logout">
+        <div class="dropdown">
+            <span class="my_role" th:text="${user_name}"></span>
+            <div class="dropdown-content">
+                <a href="/edit">Edit</a><br>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="form_new_order">

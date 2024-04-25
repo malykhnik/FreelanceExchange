@@ -45,6 +45,13 @@ public class AnnouncementController {
     public String editAnnouncement(@PathVariable Long id, Model model) {
         Optional<FreelanceAnnouncement> announcement = announcementService.findAnnouncementById(id);
         model.addAttribute("announcement", announcement);
+
+        model.addAttribute("user_name", getUsernameFromContext());
+
         return "edit_my_announcement";
+    }
+
+    private String getUsernameFromContext() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }

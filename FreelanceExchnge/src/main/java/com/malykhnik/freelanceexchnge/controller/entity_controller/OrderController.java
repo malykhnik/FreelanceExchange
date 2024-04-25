@@ -41,6 +41,12 @@ public class OrderController {
     public String editOrder(@PathVariable Long id, Model model) {
         Optional<Order> order = orderService.findOrderById(id);
         model.addAttribute("order", order);
+        model.addAttribute("user_name", getUsernameFromContext());
+
         return "edit_my_order";
+    }
+
+    private String getUsernameFromContext() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }

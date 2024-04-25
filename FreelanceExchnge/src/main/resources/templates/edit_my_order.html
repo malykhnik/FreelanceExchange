@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Order</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/edit_css.css"/>
 </head>
 <body>
+
+<div class="main_info">
+    <a href="/getMainPage">
+        <img class="logo" src="/images/logo.jpg">
+        <span class="logo_name">Freelance Exchange</span>
+    </a>
+    <div class="name_and_logout">
+        <div class="dropdown">
+            <span class="my_role" th:text="${user_name}"></span>
+            <div class="dropdown-content">
+                <a href="/edit">Edit</a><br>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

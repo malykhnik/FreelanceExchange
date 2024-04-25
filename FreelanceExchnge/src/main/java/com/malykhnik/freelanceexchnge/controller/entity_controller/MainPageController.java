@@ -41,6 +41,8 @@ public class MainPageController {
         ArrayList<FreelanceAnnouncement> freelanceList = (ArrayList<FreelanceAnnouncement>) announcementService.findAnnouncementByUsername(getUsernameFromContext());
         model.addAttribute("announcements", freelanceList);
 
+        model.addAttribute("user_name", getUsernameFromContext());
+
         return "edit";
     }
 
