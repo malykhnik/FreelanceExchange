@@ -10,11 +10,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class AnnouncementServiceImpl implements AnnouncementService {
 
-    private final AnnouncementRepository announcmentRepository;
+    private final AnnouncementRepository announcementRepository;
     private final UserRepository userRepository;
     @Override
     public void saveNewAnnouncement(FreelanceAnnouncement freelanceAnnouncement) {
@@ -25,6 +28,22 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         } else {
             throw new UsernameNotFoundException("Такого пользователя не существует!");
         }
-        announcmentRepository.save(freelanceAnnouncement);
+        announcementRepository.save(freelanceAnnouncement);
+    }
+
+    public List<FreelanceAnnouncement> getAllAnnouncements() {
+        return announcementRepository.findAll();
+    }
+
+    public List<FreelanceAnnouncement> findAnnouncementByUsername(String username) {
+        return announcementRepository.findAnnouncementByUsername(username);
+    }
+
+    public Optional<FreelanceAnnouncement> findAnnouncementById(Long id)  {
+        return announcementRepository.findById(id);
+    }
+
+    public void deleteAnnouncementById(Long id) {
+        announcementRepository.deleteById(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.malykhnik.freelanceexchnge.controller.entity_controller;
 
 import com.malykhnik.freelanceexchnge.model.Order;
-import com.malykhnik.freelanceexchnge.service.impls.OrderServiceImpl;
+import com.malykhnik.freelanceexchnge.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
 public class OrderController {
-    private final OrderServiceImpl orderService;
+    private final OrderService orderService;
 
     @GetMapping("/newOrder")
     public String createNewOrder(Model model) {
@@ -25,9 +25,22 @@ public class OrderController {
         return "new_order";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveOrder")
     public String saveNewOrder(@ModelAttribute("order") Order order) {
         orderService.saveNewOrder(order);
         return "redirect:/getMainPage";
+    }
+
+    @GetMapping("/deleteOrder/{id}")
+    public String deleteOrder(@PathVariable Long id) {
+        orderService.deleteOrderById(id);
+        return "redirect:/edit";
+    }
+
+    @GetMapping("/editOrder/{id}")
+    public String editOrder(@PathVariable Long id, Model model) {
+        Optional<Order> order = orderService.findOrderById(id);
+        model.addAttribute("order", order);
+        return "edit_my_order";
     }
 }

@@ -11,8 +11,14 @@
     <img class="logo" src="/images/logo.jpg">
     <span class="logo_name">Freelance Exchange</span>
     <div class="name_and_logout">
-        <span class="my_role" th:text="${user_name}"></span>
-        <a href="/logout"><img class="logout" src="/images/logout.png"></a>
+        <div class="dropdown">
+            <span class="my_role" th:text="${user_name}"></span>
+            <div class="dropdown-content">
+                <a href="/edit">Edit</a><br>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -31,7 +37,6 @@
             <div class="product">
                 <table border="1" cellpadding="5">
                     <tr>
-                        <td><span th:text="${order.id}"></span></td>
                         <td><span th:text="${order.user.username}"></span></td>
                         <td><span th:text="${order.orderName}"></span></td>
                         <td><span th:text="${order.description}"></span></td>
@@ -42,7 +47,22 @@
         </li>
     </ul>
     </div>
-    <div class="right_block"></div>
+    <div class="right_block">
+        <h2>Список услуг:</h2>
+        <ul>
+            <li th:each="announcement : ${announcements}">
+                <div class="product">
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <td><span th:text="${announcement.user.username}"></span></td>
+                            <td><span th:text="${announcement.name}"></span></td>
+                            <td><span th:text="${announcement.description}"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 
 </body>

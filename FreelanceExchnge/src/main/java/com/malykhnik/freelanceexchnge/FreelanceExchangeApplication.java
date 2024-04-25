@@ -1,11 +1,12 @@
 package com.malykhnik.freelanceexchnge;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootApplication
-//@Sql("C:/Users/shere/IdeaProjects/FreelanceExchnge/src/main/resources/sql_scrypts/createTable.sql")
 public class FreelanceExchangeApplication {
 
     public static void main(String[] args) {

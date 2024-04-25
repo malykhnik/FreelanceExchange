@@ -1,0 +1,101 @@
+.main_info {
+    border-bottom: 1px solid black;
+    position: relative;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 40%;
+    margin-left: 30px;
+    margin-right: 50px;
+}
+
+.logout {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+
+.logo_name {
+    font-size: 50px;
+    position: absolute;
+    top: -7%
+}
+
+.my_role {
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    margin-right: 5px;
+}
+
+
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:active {
+    color: black;
+}
+
+
+.form_new_announcement {
+    border-radius: 10px;
+    width: 500px; /* Ширина формы */
+    margin: 20px auto; /* Центрирование формы */
+    font-family: Arial, sans-serif;
+}
+
+.form_new_announcement form {
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: collapse; /* Убираем двойные границы таблицы */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Стилизация заголовков таблицы */
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Стилизация input */
+input[type="text"] {
+    width: 93%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Стилизация кнопки submit */
+input[type="submit"] {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Стилизация при наведении на кнопку */
+input[type="submit"]:hover {
+    background-color: #3e8e41; /* Темно-зеленый цвет при наведении */
+}
