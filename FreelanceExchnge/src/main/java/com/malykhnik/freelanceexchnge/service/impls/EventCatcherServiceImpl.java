@@ -6,6 +6,8 @@ import com.malykhnik.freelanceexchnge.service.EventCatcherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EventCatcherServiceImpl implements EventCatcherService {
@@ -13,5 +15,10 @@ public class EventCatcherServiceImpl implements EventCatcherService {
     @Override
     public void saveEventCatcher(EventCatcher eventCatcher) {
         eventCatcherRepository.save(eventCatcher);
+    }
+
+    @Override
+    public List<EventCatcher> getAllActions() {
+        return eventCatcherRepository.findByOrderByDateDesc();
     }
 }

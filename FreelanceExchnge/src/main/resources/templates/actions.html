@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actions</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/actions_css.css"/>
+</head>
+<body>
+
+<div class="main_info">
+    <a href="/getMainPage">
+        <img class="logo" src="/images/logo.jpg">
+        <span class="logo_name">Freelance Exchange</span>
+    </a>
+    <div class="name_and_logout">
+        <div class="dropdown">
+            <span class="my_role" th:text="${user_name}"></span>
+            <div class="dropdown-content">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="actions_list">
+    <h2>Список событий:</h2>
+    <ul>
+        <li th:each="action : ${actions}">
+            <div class="product">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <td><span th:text="${action.username}"></span></td>
+                        <td><span th:text="${action.action}"></span></td>
+                        <td><span th:text="${action.date}"></span></td>
+                   </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

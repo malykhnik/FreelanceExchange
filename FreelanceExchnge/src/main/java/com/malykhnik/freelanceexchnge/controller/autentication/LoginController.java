@@ -40,7 +40,7 @@ class LoginController {
                         @Autowired EventCatcher eventCatcher) {
 
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        eventCatcher.setDate(DateFormatter.formatCurrentDate(LocalDateTime.now()));
+        eventCatcher.setDate(LocalDateTime.now());
 
         UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(username, password);
         try {

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,7 +45,7 @@ public class AnnouncementController {
 
         eventCatcher.setAction("Новая услуга");
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        eventCatcher.setDate(DateFormatter.formatCurrentDate(LocalDateTime.now()));
+        eventCatcher.setDate(LocalDateTime.now());
 
         eventCatcherService.saveEventCatcher(eventCatcher);
 
@@ -58,12 +59,15 @@ public class AnnouncementController {
 
         eventCatcher.setAction("Удаление услуги");
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        eventCatcher.setDate(DateFormatter.formatCurrentDate(LocalDateTime.now()));
+        eventCatcher.setDate(LocalDateTime.now());
 
         eventCatcherService.saveEventCatcher(eventCatcher);
 
         List<? extends GrantedAuthority> authorities = (List<? extends GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        Set<? extends GrantedAuthority> userRoles = new HashSet<>(authorities);
+        Set<String> userRoles = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toSet());
+
         if (userRoles.contains("ROLE_admin")) {
             return "redirect:/getMainPage";
         }
@@ -79,14 +83,17 @@ public class AnnouncementController {
 
         eventCatcher.setAction("Редактирование услуги");
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        eventCatcher.setDate(DateFormatter.formatCurrentDate(LocalDateTime.now()));
+        eventCatcher.setDate(LocalDateTime.now());
 
         eventCatcherService.saveEventCatcher(eventCatcher);
 
         model.addAttribute("user_name", getUsernameFromContext());
 
         List<? extends GrantedAuthority> authorities = (List<? extends GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        Set<? extends GrantedAuthority> userRoles = new HashSet<>(authorities);
+        Set<String> userRoles = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toSet());
+
         if (userRoles.contains("ROLE_admin")) {
             return "redirect:/getMainPage";
         }

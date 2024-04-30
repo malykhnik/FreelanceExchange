@@ -40,7 +40,7 @@ public class RegistrationController {
 
         eventCatcher.setAction("registration");
         eventCatcher.setUsername(userForm.getUsername());
-        eventCatcher.setDate(DateFormatter.formatCurrentDate(LocalDateTime.now()));
+        eventCatcher.setDate(LocalDateTime.now());
 
         if (bindingResult.hasErrors()) {
             return "registration";
