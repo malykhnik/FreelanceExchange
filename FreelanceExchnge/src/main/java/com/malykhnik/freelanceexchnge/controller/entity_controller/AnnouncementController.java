@@ -5,7 +5,6 @@ import com.malykhnik.freelanceexchnge.model.FreelanceAnnouncement;
 import com.malykhnik.freelanceexchnge.model.Order;
 import com.malykhnik.freelanceexchnge.service.AnnouncementService;
 import com.malykhnik.freelanceexchnge.service.EventCatcherService;
-import com.malykhnik.freelanceexchnge.utils.DateFormatter;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

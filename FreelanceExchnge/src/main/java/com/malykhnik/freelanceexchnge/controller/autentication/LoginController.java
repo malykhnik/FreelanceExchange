@@ -2,7 +2,6 @@ package com.malykhnik.freelanceexchnge.controller.autentication;
 
 import com.malykhnik.freelanceexchnge.model.EventCatcher;
 import com.malykhnik.freelanceexchnge.service.EventCatcherService;
-import com.malykhnik.freelanceexchnge.utils.DateFormatter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

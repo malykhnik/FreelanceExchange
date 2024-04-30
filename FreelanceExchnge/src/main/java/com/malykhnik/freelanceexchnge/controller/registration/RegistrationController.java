@@ -4,7 +4,6 @@ import com.malykhnik.freelanceexchnge.model.EventCatcher;
 import com.malykhnik.freelanceexchnge.model.User;
 import com.malykhnik.freelanceexchnge.service.EventCatcherService;
 import com.malykhnik.freelanceexchnge.service.UserService;
-import com.malykhnik.freelanceexchnge.utils.DateFormatter;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
