@@ -21,9 +21,9 @@ public class MVCConfig implements WebMvcConfigurer {
         registry.jsp("/templates/", ".html");
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
-    }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addViewController("/login").setViewName("login");
+//    }
 
 }

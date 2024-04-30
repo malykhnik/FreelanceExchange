@@ -2,12 +2,11 @@ package com.malykhnik.freelanceexchnge.configuration.security;
 
 import com.malykhnik.freelanceexchnge.model.User;
 import com.malykhnik.freelanceexchnge.repository.UserRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

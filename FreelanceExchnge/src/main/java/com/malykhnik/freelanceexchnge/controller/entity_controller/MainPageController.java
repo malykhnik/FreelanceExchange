@@ -5,6 +5,7 @@ import com.malykhnik.freelanceexchnge.model.Order;
 import com.malykhnik.freelanceexchnge.service.AnnouncementService;
 import com.malykhnik.freelanceexchnge.service.OrderService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MainPageController {
 
     private final OrderService orderService;

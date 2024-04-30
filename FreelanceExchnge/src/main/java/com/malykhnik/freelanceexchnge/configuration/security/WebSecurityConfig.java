@@ -35,22 +35,26 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return  http.csrf(AbstractHttpConfigurer::disable)
+                .formLogin(form -> form
+                        .loginProcessingUrl("/customLogin")
+                        .loginPage("/customLogin")
+                        .defaultSuccessUrl("/getMainPage", true)
+                        .permitAll()
+                )
+                
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/registration").permitAll()
                         .requestMatchers("/static/css/*.css").permitAll()
                         .requestMatchers("/static/images/*").permitAll()
-                        .requestMatchers("/newOrder").hasRole("customer")
-                        .requestMatchers("/newService").hasRole("freelancer")
+                        .requestMatchers("/newOrder").hasAnyRole("customer","admin")
+                        .requestMatchers("/newService").hasAnyRole("freelancer","admin")
                         .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/getMainPage", true)
-                        .permitAll()
-                )
+
                 .logout(logout -> logout
                         .logoutUrl("redirect:/logout")
                         .permitAll()
                 )
+
                 .build();
     }
 

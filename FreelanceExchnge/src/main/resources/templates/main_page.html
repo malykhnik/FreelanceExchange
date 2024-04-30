@@ -27,9 +27,10 @@
             <a class="new_order_span" href="/newOrder">Новый заказ</a>
         </div>
 
-        <div class="new_service" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
-            <a class="new_service_span" href="/newService">Новая услуга</a>
+        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
+            <a class="new_order_span" href="/newService">Новая услуга</a>
         </div>
+
     <h2>Список заказов:</h2>
     <ul>
         <li th:each="order : ${orders}">
@@ -40,6 +41,8 @@
                         <td><span th:text="${order.orderName}"></span></td>
                         <td><span th:text="${order.description}"></span></td>
                         <td><span th:text="${order.status}"></span></td>
+                        <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}"><a th:href="@{/editOrder/{id}(id=${order.id})}"><img class="img1" src="/images/edit.png"></a> </td>
+                        <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}"><a th:href="@{/deleteOrder/{id}(id=${order.id})}"><img class="img1" src="/images/delete.png"></a> </td>
                     </tr>
                 </table>
             </div>
@@ -56,6 +59,8 @@
                             <td><span th:text="${announcement.user.username}"></span></td>
                             <td><span th:text="${announcement.name}"></span></td>
                             <td><span th:text="${announcement.description}"></span></td>
+                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}"><a th:href="@{/editAnnouncement/{id}(id=${announcement.id})}"><img class="img1" src="/images/edit.png"></a> </td>
+                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}"><a th:href="@{/deleteAnnouncement/{id}(id=${announcement.id})}"><img class="img1" src="/images/delete.png"></a> </td>
                         </tr>
                     </table>
                 </div>

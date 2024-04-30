@@ -6,6 +6,7 @@ import com.malykhnik.freelanceexchnge.repository.AnnouncementRepository;
 import com.malykhnik.freelanceexchnge.repository.UserRepository;
 import com.malykhnik.freelanceexchnge.service.AnnouncementService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AnnouncementServiceImpl implements AnnouncementService {
 
     private final AnnouncementRepository announcementRepository;
