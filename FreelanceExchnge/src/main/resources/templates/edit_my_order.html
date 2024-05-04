@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Order</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/edit_css.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/edit_my_order.css"/>
 </head>
 <body>
 
@@ -21,6 +21,28 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="form_edit_order">
+    <form th:method="POST" th:action="@{/editOrder}" th:object="${order}">
+        <table border="1" cellpadding="5">
+            <tr>
+                <td>Название заказа:</td>
+                <td><input type="text" th:field="*{orderName}"  placeholder="Измените название"/></td>
+            </tr>
+            <tr>
+                <td>Описание:</td>
+                <td><input type="text" th:field="*{description}" placeholder="Измените описание"/></td>
+            </tr>
+            <tr>
+                <td>Стоимость:</td>
+                <td><input type="text" th:field="*{price}" placeholder="Измените стоимость"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
 </div>
 
 </body>

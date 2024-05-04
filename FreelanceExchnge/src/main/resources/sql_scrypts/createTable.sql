@@ -3,11 +3,6 @@ drop table orders;
 drop table users;
 drop table roles;
 
-CREATE TABLE if not exists roles
-(
-    id        SERIAL PRIMARY KEY,
-    role_name VARCHAR(50)
-);
 
 CREATE TABLE if not exists users
 (
@@ -15,9 +10,8 @@ CREATE TABLE if not exists users
     username   VARCHAR(255) UNIQUE,
     password   VARCHAR(255),
     name       VARCHAR(255),
-    role_id    INTEGER,
     tel_number VARCHAR(20),
-    FOREIGN KEY (role_id) REFERENCES roles (id)
+    role       VARCHAR(20)
 );
 
 CREATE TABLE if not exists orders

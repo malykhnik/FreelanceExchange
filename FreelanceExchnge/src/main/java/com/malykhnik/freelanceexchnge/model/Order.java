@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -24,6 +26,6 @@ public class Order {
 
     private String description;
 
-    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'Active'")
-    private String status = "Active";
+    @Column
+    private BigDecimal price;
 }

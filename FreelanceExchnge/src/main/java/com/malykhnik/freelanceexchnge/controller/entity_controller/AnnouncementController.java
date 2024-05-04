@@ -77,8 +77,14 @@ public class AnnouncementController {
     public String editAnnouncement(@PathVariable Long id,
                                    Model model,
                                    @Autowired EventCatcher eventCatcher) {
-        Optional<FreelanceAnnouncement> announcement = announcementService.findAnnouncementById(id);
-        model.addAttribute("announcement", announcement);
+        Optional<FreelanceAnnouncement> announcementOptional = announcementService.findAnnouncementById(id);
+        if (announcementOptional.isPresent()) {
+            FreelanceAnnouncement announcement = announcementOptional.get();
+            model.addAttribute("announcement", announcement);
+            model.addAttribute("user_name", getUsernameFromContext());
+        } else {
+            throw new RuntimeException("Такой услуги не существует");
+        }
 
         eventCatcher.setAction("Редактирование услуги");
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -94,9 +100,15 @@ public class AnnouncementController {
                 .collect(Collectors.toSet());
 
         if (userRoles.contains("ROLE_admin")) {
-            return "redirect:/getMainPage";
+            return "edit_my_announcement";
         }
         return "edit_my_announcement";
+    }
+
+    @PostMapping("/editAnnouncement")
+    public String editAnnouncement(@ModelAttribute("announcement") FreelanceAnnouncement announcement) {
+        announcementService.saveNewAnnouncement(announcement);
+        return "redirect:/getMainPage";
     }
 
     private String getUsernameFromContext() {

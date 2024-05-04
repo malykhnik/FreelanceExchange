@@ -23,5 +23,27 @@
     </div>
 </div>
 
+<div class="form_edit_announcement">
+    <form th:method="POST" th:action="@{/editAnnouncement}" th:object="${announcement}">
+        <table border="1" cellpadding="5">
+            <tr>
+                <td>Название заказа:</td>
+                <td><input type="text" th:field="*{name}"  placeholder="Измените название"/></td>
+            </tr>
+            <tr>
+                <td>Описание:</td>
+                <td><input type="text" th:field="*{description}" placeholder="Измените описание"/></td>
+            </tr>
+            <tr>
+                <td>Стоимость:</td>
+                <td><input type="text" th:field="*{price}" placeholder="Измените стоимость"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
 </body>
 </html>

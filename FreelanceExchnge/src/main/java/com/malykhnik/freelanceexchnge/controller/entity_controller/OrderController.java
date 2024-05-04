@@ -77,9 +77,16 @@ public class OrderController {
     public String editOrder(@PathVariable Long id,
                             Model model,
                             @Autowired EventCatcher eventCatcher) {
-        Optional<Order> order = orderService.findOrderById(id);
-        model.addAttribute("order", order);
-        model.addAttribute("user_name", getUsernameFromContext());
+        Optional<Order> orderOptional = orderService.findOrderById(id);
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            model.addAttribute("order", order);
+
+            model.addAttribute("order", order);
+            model.addAttribute("user_name", getUsernameFromContext());
+        } else {
+            throw new RuntimeException("Такого заказа не существует");
+        }
 
         eventCatcher.setAction("Редактирование заказа");
         eventCatcher.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -93,10 +100,16 @@ public class OrderController {
                 .collect(Collectors.toSet());
 
         if (userRoles.contains("ROLE_admin")) {
-            return "redirect:/getMainPage";
+            return "edit_my_order";
         }
 
         return "edit_my_order";
+    }
+
+    @PostMapping("/editOrder")
+    public String editOrder(@ModelAttribute("order") Order order) {
+        orderService.saveNewOrder(order);
+        return "redirect:/getMainPage";
     }
 
     private String getUsernameFromContext() {
