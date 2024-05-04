@@ -4,7 +4,6 @@ package com.malykhnik.freelanceexchnge.service.impls;
 import com.malykhnik.freelanceexchnge.model.User;
 import com.malykhnik.freelanceexchnge.repository.UserRepository;
 import com.malykhnik.freelanceexchnge.service.UserService;
-import lombok.AllArgsConstructor;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,14 +16,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
 
-    public boolean saveUser(User user) {
+    public void saveUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            return false;
+            return;
         }
 
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
-        return false;
     }
 
     public User findByUsername(String username) {

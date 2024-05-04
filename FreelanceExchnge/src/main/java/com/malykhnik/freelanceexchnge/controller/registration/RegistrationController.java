@@ -33,7 +33,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(@ModelAttribute("userForm") @Valid User userForm,
+    public String addUser(@ModelAttribute("userForm") User userForm,
                           BindingResult bindingResult,
                           Model model, @Autowired EventCatcher eventCatcher) {
 

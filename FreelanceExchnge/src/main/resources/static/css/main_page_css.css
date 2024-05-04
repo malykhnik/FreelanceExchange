@@ -31,6 +31,7 @@
 }
 
 .name_and_logout {
+    display: flex;
     top: 5%;
     position: absolute;
     right: 1%;
@@ -159,10 +160,17 @@ td:nth-child(6) {
     max-width: 45px;
 }
 
-
-
 .img1 {
     width: 40px;
     height: 40px;
+}
+
+.img_mess {
+    width: 30px;
+    height: 30px;
+}
+
+.request {
+    margin-right: 10px;
 }
 
