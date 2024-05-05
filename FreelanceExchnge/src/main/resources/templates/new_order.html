@@ -4,24 +4,12 @@
     <meta charset="UTF-8">
     <title>New Order</title>
     <link rel="stylesheet" type="text/css" href="/static/css/new_order_css.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
 </head>
 
 <body>
-<div class="main_info">
-    <a href="/getMainPage">
-        <img class="logo" src="/images/logo.jpg">
-        <span class="logo_name">Freelance Exchange</span>
-    </a>
-    <div class="name_and_logout">
-        <div class="dropdown">
-            <span class="my_role" th:text="${user_name}"></span>
-            <div class="dropdown-content">
-                <a href="/edit">Edit</a><br>
-                <a href="/logout">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+
+<div th:replace="fragments/header :: header"></div>
 
 <div class="form_new_order">
     <form th:method="POST" th:action="@{/saveOrder}" th:object="${order}">

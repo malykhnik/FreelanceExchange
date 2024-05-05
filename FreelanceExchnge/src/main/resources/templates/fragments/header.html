@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="header">
+    <div class="main_info">
+        <img class="logo" src="/images/logo.jpg">
+        <span class="logo_name">Freelance Exchange</span>
+        <div class="name_and_logout">
+            <div class="request" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
+                <a class="request_a" href="/requestCustomer">
+                    <div th:if="${not #lists.isEmpty(requests)}">
+                        <img class="img_mess" src="/images/mes_yes.png">
+                    </div>
+                    <div th:if="${#lists.isEmpty(requests)}">
+                        <img class="img_mess" src="/images/mess_no.png">
+                    </div>
+                </a>
+            </div>
+
+            <div class="request" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
+                <a class="request_a" href="/requestFreelancer">
+                    <div th:if="${not #lists.isEmpty(requests)}">
+                        <img class="img_mess" src="/images/mes_yes.png">
+                    </div>
+                    <div th:if="${#lists.isEmpty(requests)}">
+                        <img class="img_mess" src="/images/mess_no.png">
+                    </div>
+                </a>
+            </div>
+            <div class="dropdown">
+                <span class="my_role" th:text="${user_name}"></span>
+                <div class="dropdown-content">
+                    <div th:if="${#authorization.expression('hasRole(''ROLE_freelancer'') or hasRole(''ROLE_customer'')')}">
+                        <a class="edit_href" href="/edit">Edit</a><br>
+                    </div>
+                    <a class="logout_href" href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ... остальной контент ... -->
+</body>
+</html>
