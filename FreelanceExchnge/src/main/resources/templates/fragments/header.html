@@ -7,8 +7,10 @@
 <body>
 <div th:fragment="header">
     <div class="main_info">
-        <img class="logo" src="/images/logo.jpg">
-        <span class="logo_name">Freelance Exchange</span>
+        <a href="/getMainPage">
+            <img class="logo" src="/images/logo.jpg">
+            <span class="logo_name">Freelance Exchange</span>
+        </a>
         <div class="name_and_logout">
             <div class="request" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
                 <a class="request_a" href="/requestCustomer">

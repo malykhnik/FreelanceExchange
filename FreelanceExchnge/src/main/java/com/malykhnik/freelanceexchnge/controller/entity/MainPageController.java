@@ -26,8 +26,8 @@ public class MainPageController {
         ArrayList<Order> ordersList = (ArrayList<Order>) orderService.getAllOrders();
         model.addAttribute("orders", ordersList);
 
-        ArrayList<PurchaseRequest> requests = (ArrayList<PurchaseRequest>) getRequestsByCurrentUser();
-        model.addAttribute("requests", requests);
+//        ArrayList<PurchaseRequest> requests = (ArrayList<PurchaseRequest>) getRequestsByCurrentUser();
+//        model.addAttribute("requests", requests);
 
         ArrayList<FreelanceAnnouncement> freelanceList = (ArrayList<FreelanceAnnouncement>) announcementService.getAllAnnouncements();
         model.addAttribute("announcements", freelanceList);

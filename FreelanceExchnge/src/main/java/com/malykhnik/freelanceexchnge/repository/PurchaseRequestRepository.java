@@ -17,8 +17,8 @@ public interface PurchaseRequestRepository extends JpaRepository<PurchaseRequest
 
     @Query("SELECT pr FROM PurchaseRequest pr " +
             "WHERE pr.order.id = :orderName " +
-            "AND pr.userFrom = :userFrom " +
-            "AND pr.userTo = :userTo")
+            "AND pr.userFrom.id = :userFrom " +
+            "AND pr.userTo.id = :userTo")
     Optional<PurchaseRequest> findByOrderNameAndUsers(
             @Param("orderName") String orderName,
             @Param("userFrom") String userFrom,

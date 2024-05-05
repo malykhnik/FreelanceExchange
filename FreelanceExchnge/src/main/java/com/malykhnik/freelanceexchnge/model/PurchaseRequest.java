@@ -15,11 +15,13 @@ public class PurchaseRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "from_id")
-    private Long userFrom;
+    @ManyToOne
+    @JoinColumn(name = "user_from")
+    private User userFrom;
 
-    private Long userTo;
+    @ManyToOne
+    @JoinColumn(name = "user_to")
+    private User userTo;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -28,7 +30,7 @@ public class PurchaseRequest {
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'NONE'")
     private String status;
 
-    public PurchaseRequest(Long from, Long to, Order order, String status) {
+    public PurchaseRequest(User from, User to, Order order, String status) {
         this.userTo = to;
         this.userFrom = from;
         this.order = order;

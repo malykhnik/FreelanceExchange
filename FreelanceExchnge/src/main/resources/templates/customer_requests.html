@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer requests</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <ul>
+        <li th:each="request: ${requests}">
+            <div class="product">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <td><span th:text="${request.order}"></span></td>
+                        <td><span th:text="${request.status}"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

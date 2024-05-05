@@ -7,14 +7,14 @@ import com.malykhnik.freelanceexchnge.service.OrderService;
 import com.malykhnik.freelanceexchnge.service.PurchaseRequestService;
 import com.malykhnik.freelanceexchnge.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -40,7 +40,7 @@ public class PurchaseRequestController {
         User userFrom;
         if (freelancerOptional.isPresent()) {
             userFrom = freelancerOptional.get();
-            PurchaseRequest request = new PurchaseRequest(userFrom.getId(), userTo.getId(), order, "Waiting");
+            PurchaseRequest request = new PurchaseRequest(userFrom, userTo, order, "Waiting");
             if (requestService.findByOrderAndUsers(String.valueOf(order.getId()),
                     String.valueOf(userFrom.getId()),
                     String.valueOf(userTo.getId())).isEmpty()) {
@@ -56,5 +56,22 @@ public class PurchaseRequestController {
         }
 
         return "redirect:/getMainPage";
+    }
+
+    @GetMapping("/requestCustomer")
+    public String getRequestCustomer(Model model) {
+        ArrayList<PurchaseRequest> requests = (ArrayList<PurchaseRequest>) getRequestsByCurrentUser();
+        model.addAttribute("requests", requests);
+
+        return "customer_requests";
+    }
+
+    private String getUsernameFromContext() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    private List<PurchaseRequest> getRequestsByCurrentUser() {
+        User user = userService.findByUsername(getUsernameFromContext());
+        return requestService.getAllRequestsByUserTo(user.getId());
     }
 }
