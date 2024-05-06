@@ -13,8 +13,6 @@ import java.util.Optional;
 
 @Repository
 public interface PurchaseRequestRepository extends JpaRepository<PurchaseRequest, Long> {
-    Optional<PurchaseRequest> findById(Long id);
-
     @Query("SELECT pr FROM PurchaseRequest pr " +
             "WHERE pr.order.id = :orderName " +
             "AND pr.userFrom.id = :userFrom " +
@@ -24,6 +22,14 @@ public interface PurchaseRequestRepository extends JpaRepository<PurchaseRequest
             @Param("userFrom") String userFrom,
             @Param("userTo") String userTo);
 
-    @Query("SELECT pr FROM PurchaseRequest pr WHERE pr.userTo = :id")
+    @Query("SELECT pr FROM PurchaseRequest pr WHERE pr.userTo.id = :id")
     List<PurchaseRequest> getAllRequestsByUserTo(@Param("id") Long id);
+
+    @Query("SELECT pr FROM PurchaseRequest pr WHERE pr.userFrom.username = :username AND pr.status = :status")
+    List<PurchaseRequest> getAllRequestsByFreelancerWithStatus(@Param("username") String username,
+                                                               @Param("status") String status);
+
+    @Query("SELECT pr FROM PurchaseRequest  pr WHERE pr.userTo.username = :username AND pr.status = :status")
+    List<PurchaseRequest> getRequestsFromCustomer(@Param("username") String username,
+                                                  @Param("status") String status);
 }

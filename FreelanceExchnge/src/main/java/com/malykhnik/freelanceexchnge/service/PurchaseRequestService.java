@@ -12,4 +12,6 @@ public interface PurchaseRequestService {
     Optional<PurchaseRequest> findById(Long id);
     Optional<PurchaseRequest> findByOrderAndUsers(String order, String freelancer, String customer);
     List<PurchaseRequest> getAllRequestsByUserTo(Long id);
+    List<PurchaseRequest> getAllRequestsByFreelancerWithStatus(String username, String status);
+    List<PurchaseRequest> getRequestsFromCustomer(String username, String status);
 }

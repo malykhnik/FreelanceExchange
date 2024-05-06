@@ -71,4 +71,9 @@
 
 .request {
     margin-right: 10px;
+    display: flex;
+}
+
+.tasks_fr {
+    margin-right: 10px;
 }

@@ -34,4 +34,14 @@ public class PurchaseRequestServiceImpl implements PurchaseRequestService {
     public List<PurchaseRequest> getAllRequestsByUserTo(Long id) {
         return requestRepository.getAllRequestsByUserTo(id);
     }
+
+    @Override
+    public List<PurchaseRequest> getAllRequestsByFreelancerWithStatus(String username, String status) {
+        return requestRepository.getAllRequestsByFreelancerWithStatus(username, status);
+    }
+
+    @Override
+    public List<PurchaseRequest> getRequestsFromCustomer(String username, String status) {
+        return requestRepository.getRequestsFromCustomer(username, status);
+    }
 }

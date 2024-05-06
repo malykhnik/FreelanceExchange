@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Customer requests</title>
     <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/customer_requests.css"/>
 </head>
 <body>
 
 <div th:replace="fragments/header :: header"></div>
+
+<h1>Запросы на ваши заказы</h1>
 
 <div class="container">
     <ul>
@@ -15,8 +18,15 @@
             <div class="product">
                 <table border="1" cellpadding="5">
                     <tr>
-                        <td><span th:text="${request.order}"></span></td>
+                        <td><span th:text="${request.userFrom.name}"></span></td>
+                        <td><span th:text="${request.order.orderName}"></span></td>
                         <td><span th:text="${request.status}"></span></td>
+                        <td><a th:href="@{/acceptRequest/{id}(id=${request.id})}">
+                            <img class="img_req" src="/images/accept.png">
+                        </a></td>
+                        <td><a th:href="@{/rejectRequest/{id}(id=${request.id})}">
+                            <img class="img_req" src="/images/reject.png">
+                        </a></td>
                     </tr>
                 </table>
             </div>

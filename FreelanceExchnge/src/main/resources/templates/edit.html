@@ -22,8 +22,14 @@
                             <td><span th:text="${order.orderName}"></span></td>
                             <td><span th:text="${order.description}"></span></td>
                             <td><span th:text="${order.price}"></span></td>
-                            <td><a th:href="@{/editOrder/{id}(id=${order.id})}"><img class="img1" src="/images/edit.png"></a> </td>
-                            <td><a th:href="@{/deleteOrder/{id}(id=${order.id})}"><img class="img1" src="/images/delete.png"></a> </td>
+                            <td th:if="${send == false}"><a th:href="@{/editOrder/{id}(id=${order.id})}"><img class="img1" src="/images/edit.png"></a> </td>
+                            <td th:if="${send == false}"><a th:href="@{/deleteOrder/{id}(id=${order.id})}"><img class="img1" src="/images/delete.png"></a> </td>
+                            <td th:if="${send == true}">
+                                <a th:href="@{/sendRequestToFr(id=${order.id},username=${username})}">
+                                    <img class="img1" src="/images/send.png">
+                                </a>
+                            </td>
+                            <!--                            <td th:if="${send == true}"><a th:href="@{/sendRequestToFr(param1=${order.id}, param2=${username})}"><img class="img1" src="/images/send.png"></a></td>-->
                         </tr>
                     </table>
                 </div>

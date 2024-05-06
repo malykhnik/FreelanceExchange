@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <ul>
+        <li th:each="task: ${tasks_fr}">
+            <div class="product">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <td><span th:text="${task.userTo.name}"></span></td>
+                        <td><span th:text="${task.order.orderName}"></span></td>
+                        <td><span th:text="${task.status}"></span></td>
+<!--                        <td><a th:href="@{/acceptRequest/{id}(id=${request.id})}">-->
+<!--                            <img class="img_req" src="/images/accept.png">-->
+<!--                        </a></td>-->
+<!--                        <td><a th:href="@{/rejectRequest/{id}(id=${request.id})}">-->
+<!--                            <img class="img_req" src="/images/reject.png">-->
+<!--                        </a></td>-->
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
