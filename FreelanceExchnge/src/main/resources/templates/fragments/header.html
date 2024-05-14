@@ -12,6 +12,20 @@
             <span class="logo_name">Freelance Exchange</span>
         </a>
         <div class="name_and_logout">
+
+            <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
+                <a class="new_order_span" href="/newOrder">Новый заказ</a>
+            </div>
+
+            <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
+                <a class="new_order_span" href="/newService">Новая услуга</a>
+            </div>
+
+            <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
+                <a class="new_order_span" href="/actions">События</a>
+            </div>
+
+
             <div class="request" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
                 <a class="request_a" href="/requestCustomer">
                     <div th:if="${not #lists.isEmpty(requests)}">
@@ -33,17 +47,8 @@
                         <img class="img_mess" src="/images/tasks_yes.png">
                     </div>
                 </a>
-
-
-<!--                <a class="request_a" href="/requestFreelancer">-->
-<!--                    <div th:if="${not #lists.isEmpty(requests)}">-->
-<!--                        <img class="img_mess" src="/images/mes_yes.png">-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <div th:if="${#lists.isEmpty(requests)}">-->
-<!--                    <img class="img_mess" src="/images/mess_no.png">-->
-<!--                </div>-->
             </div>
+
             <div class="dropdown">
                 <span class="my_role" th:text="${user_name}"></span>
                 <div class="dropdown-content">

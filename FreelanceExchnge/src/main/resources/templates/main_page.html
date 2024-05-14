@@ -12,49 +12,50 @@
 
 <div class="container">
     <div class="left_block">
-        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
-            <a class="new_order_span" href="/newOrder">Новый заказ</a>
+        <h2>Список заказов</h2>
+
+        <!--        <ul>-->
+        <!--            <li th:each="order: ${orders}">-->
+        <!--                <div class="product">-->
+        <!--                    <table border="1" cellpadding="5">-->
+        <!--                        <tr>-->
+        <!--                            <td><span th:text="${order.user.username}"></span></td>-->
+        <!--                            <td><span th:text="${order.orderName}"></span></td>-->
+        <!--                            <td><span th:text="${order.description}"></span></td>-->
+        <!--                            <td><span th:text="${order.price}"></span></td>-->
+        <!--                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">-->
+        <!--                                <a th:href="@{/editOrder/{id}(id=${order.id})}">-->
+        <!--                                    <img class="img1" src="/images/edit.png">-->
+        <!--                                </a>-->
+        <!--                            </td>-->
+        <!--                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">-->
+        <!--                                <a th:href="@{/deleteOrder/{id}(id=${order.id})}">-->
+        <!--                                    <img class="img1" src="/images/delete.png">-->
+        <!--                                </a>-->
+        <!--                            </td>-->
+        <!--                            <td th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">-->
+        <!--                                <a th:href="@{/sendRequest/{id}(id=${order.id})}">-->
+        <!--                                    <img class="img1" src="/images/send.png">-->
+        <!--                                </a>-->
+        <!--                            </td>-->
+        <!--                        </tr>-->
+        <!--                    </table>-->
+        <!--                </div>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+
+        <div class="row">
+            <div th:each="order: ${orders}">
+                <a th:href="@{/orderInfo/{id}(id=${order.id})}">
+                    <div class="card">
+                        <span class="username" th:text="${order.user.name}"></span><br>
+                        <span class="order_name" th:text="${order.orderName}"></span><br>
+                        <span class="price" th:text="${order.price}"></span>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
-            <a class="new_order_span" href="/newService">Новая услуга</a>
-        </div>
-
-        <div class="new_order" th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
-            <a class="new_order_span" href="/actions">События</a>
-        </div>
-
-        <h2>Список заказов:</h2>
-
-        <ul>
-            <li th:each="order: ${orders}">
-                <div class="product">
-                    <table border="1" cellpadding="5">
-                        <tr>
-                            <td><span th:text="${order.user.username}"></span></td>
-                            <td><span th:text="${order.orderName}"></span></td>
-                            <td><span th:text="${order.description}"></span></td>
-                            <td><span th:text="${order.price}"></span></td>
-                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
-                                <a th:href="@{/editOrder/{id}(id=${order.id})}">
-                                    <img class="img1" src="/images/edit.png">
-                                </a>
-                            </td>
-                            <td th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
-                                <a th:href="@{/deleteOrder/{id}(id=${order.id})}">
-                                    <img class="img1" src="/images/delete.png">
-                                </a>
-                            </td>
-                            <td th:if="${#authorization.expression('hasRole(''ROLE_freelancer'')')}">
-                                <a th:href="@{/sendRequest/{id}(id=${order.id})}">
-                                    <img class="img1" src="/images/send.png">
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </li>
-        </ul>
     </div>
     <div class="right_block">
         <h2>Список услуг:</h2>

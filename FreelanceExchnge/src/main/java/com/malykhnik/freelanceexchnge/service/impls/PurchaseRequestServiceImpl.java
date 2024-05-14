@@ -44,4 +44,9 @@ public class PurchaseRequestServiceImpl implements PurchaseRequestService {
     public List<PurchaseRequest> getRequestsFromCustomer(String username, String status) {
         return requestRepository.getRequestsFromCustomer(username, status);
     }
+
+    @Override
+    public void deleteRequest(PurchaseRequest request) {
+        requestRepository.delete(request);
+    }
 }

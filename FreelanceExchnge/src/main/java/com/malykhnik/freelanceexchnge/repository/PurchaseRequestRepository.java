@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface PurchaseRequestRepository extends JpaRepository<PurchaseRequest, Long> {
+
     @Query("SELECT pr FROM PurchaseRequest pr " +
             "WHERE pr.order.id = :orderName " +
             "AND pr.userFrom.id = :userFrom " +

@@ -46,6 +46,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-top: 10px
 }
 
 .dropdown-content {
@@ -70,10 +71,36 @@
 }
 
 .request {
-    margin-right: 10px;
+    margin-right: 20px;
     display: flex;
+    margin-top: 10px
 }
 
 .tasks_fr {
     margin-right: 10px;
+}
+
+.new_order {
+    position: absolute;
+    right: 120px;
+    top: 8px;
+    width: 25vh;
+    height: 4vh;
+}
+
+.new_order_span {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #FF6347;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: 20px;
+}
+
+.new_order_span:hover {
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 10px red;
 }

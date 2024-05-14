@@ -135,7 +135,19 @@ public class PurchaseRequestController {
                 requestService.saveRequest(request);
             }
         }
-        return "customer_requests";
+        return "redirect:/requestCustomer";
+    }
+
+    @GetMapping("/rejectRequest/{id}")
+    public String rejectRequest(@PathVariable(name = "id") Long id)  {
+        Optional<PurchaseRequest> requestOptional = requestService.findById(id);
+        if (findRole() == 1) {
+            if (requestOptional.isPresent()) {
+                PurchaseRequest request = requestOptional.get();
+                requestService.deleteRequest(request);
+            }
+        }
+        return "redirect:/requestCustomer";
     }
 
     @GetMapping("/tasksFreelancer")

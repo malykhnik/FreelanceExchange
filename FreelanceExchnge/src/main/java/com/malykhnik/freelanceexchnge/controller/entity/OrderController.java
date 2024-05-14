@@ -25,6 +25,16 @@ public class OrderController {
     private final OrderService orderService;
     private final EventCatcherService eventCatcherService;
 
+    @GetMapping("/orderInfo/{id}")
+    public String orderInfo(@PathVariable Long id, Model model) {
+        Optional<Order> orderOptional = orderService.findOrderById(id);
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            model.addAttribute("order", order);
+        }
+        return "order_info";
+    }
+
     @GetMapping("/newOrder")
     public String createNewOrder(Model model) {
         model.addAttribute("order", new Order());
