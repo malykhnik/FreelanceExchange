@@ -1,82 +1,171 @@
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:active {
+    color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 90vh; /* Full viewport height */
+    margin: 20px; /* Remove default margins */
+}
+
+.block {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    margin: 15px;
+    width: 60%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+ul {
+    list-style-type:  none;
+}
+
 .img1 {
     width: 40px;
     height: 40px;
 }
 
-td:nth-child(1) {
-    width: 100px;
-    max-width: 100px;
-}
-td:nth-child(2) {
-    width: 200px;
-    max-width: 200px;
-}
-td:nth-child(3) {
-    width: 450px;
-    max-width: 450px;
-}
-td:nth-child(4) {
-    width: 150px;
-    max-width: 150px;
-}
-td:nth-child(5) {
-    width: 100px;
-    max-width: 100px;
-}
-td:nth-child(6) {
-    width: 100px;
-    max-width:  100px;
+.row {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-ul li {
-    list-style-type: none;
+a, a:visited, a:hover, a:active {
+    color: black;
+    text-decoration: none;
 }
 
-.logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 40%;
+
+h2 {
     margin-left: 30px;
-    margin-right: 50px;
+    margin-top: 15px
 }
 
-.logout {
-    width: 25px;
-    height: 25px;
-}
-
-.my_role {
-    font-size: 25px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.name_and_logout {
-    top: 5%;
-    position: absolute;
-    right: 1%;
-}
-
-.logo_name {
-    font-size: 50px;
-    position: absolute;
-    top: -7%
-}
-
-.dropdown {
+.card {
     position: relative;
-    display: inline-block;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    width: 210px;
+    height: 150px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #F2E8C9;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
-.dropdown-content {
-    display: none;
+.card:hover {
+    box-shadow: 1px 1px 40px 20px #3EB489;
+}
+
+.card_head {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.card_head .username {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card_head .category {
+    margin-top: 0;
+    margin-right: 5px;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    font-size: 22px;
+    right: 20%;
+    color: #666;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.card .order_name {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-style: italic;
+    color: #009688;
+}
+
+.card .description {
+    max-height: 50px;
+    margin: 7px 10px;
+    font-size: 14px;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+}
+.card .price {
+    margin-top: 7px;
+    position: absolute;
+    bottom: 10px;
+    left: 36%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #009688;
+}
+
+.img_delete {
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    top: 15%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 20px;
+    height: 20px;
+}
+
+.card:hover .img_delete {
+    opacity: 1;
+}
+
+.img_delete:hover {
+    box-shadow: 1px 1px 10px 10px #ff2c2c;
+    transition: box-shadow 0.3s ease;
+}
+
+.img_edit {
+    position: absolute;
+    right: 0;
+    top: 30%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 20px;
+    height: 20px;
+}
+
+.card:hover .img_edit {
+    opacity: 1;
+}
+
+.img_edit:hover {
+    box-shadow: 1px 1px 15px 15px #9ef184;
+    transition: box-shadow 0.3s ease;
+}
+
+.img1 {
+    width: 20px;
+    height: 20px;
 }

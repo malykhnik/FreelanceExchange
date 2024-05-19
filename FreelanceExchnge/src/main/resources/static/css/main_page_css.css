@@ -46,31 +46,6 @@ ul {
     list-style-type:  none;
 }
 
-td:nth-child(1) {
-    width: 100px;
-    max-width: 100px;
-}
-td:nth-child(2) {
-    width: 100px;
-    max-width: 100px;
-}
-td:nth-child(3) {
-    width: 250px;
-    max-width: 250px;
-}
-td:nth-child(4) {
-    width: 70px;
-    max-width: 70px;
-}
-td:nth-child(5) {
-    width: 45px;
-    max-width: 45px;
-}
-td:nth-child(6) {
-    width: 45px;
-    max-width: 45px;
-}
-
 .img1 {
     width: 40px;
     height: 40px;
