@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Announcement Info</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/announcement_info.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="parent-container">
+  <div class="card">
+    <div class="card_head">
+      <span class="username" th:text="${announcement.user.name}"></span>
+      <span class="category" th:text="${announcement.category}"></span>
+    </div>
+    <span class="order_name" th:text="${announcement.name}"></span><br>
+    <div class="description">
+      <span th:text="${announcement.description}"></span>
+    </div>
+    <div class="price">
+      <div>
+        <span th:text="${announcement.price}"></span>
+      </div>
+
+    </div>
+
+    <div class="img_delete" th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
+      <a th:href="@{/deleteAnnouncement/{id}(id=${announcement.id})}">
+        <img class="img1" src="/images/delete.png">
+      </a>
+    </div>
+
+    <div class="img_send" th:if="${#authorization.expression('hasRole(''ROLE_customer'')')}">
+      <a th:href="@{/sendRequest/{id}(id=${announcement.id})}">
+        <img class="img1" src="/images/send.png">
+      </a>
+    </div>
+
+    <div class="img_edit" th:if="${#authorization.expression('hasRole(''ROLE_admin'')')}">
+      <a th:href="@{/editAnnouncement/{id}(id=${announcement.id})}">
+        <img class="img1" src="/images/edit.png">
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

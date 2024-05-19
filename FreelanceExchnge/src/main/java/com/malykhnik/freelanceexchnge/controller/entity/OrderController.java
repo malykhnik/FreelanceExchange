@@ -27,6 +27,9 @@ public class OrderController {
 
     @GetMapping("/orderInfo/{id}")
     public String orderInfo(@PathVariable Long id, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
         Optional<Order> orderOptional = orderService.findOrderById(id);
         if (orderOptional.isPresent()) {
             Order order = orderOptional.get();

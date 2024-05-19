@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,7 +26,11 @@ public class Order {
     private String orderName;
 
     private String description;
+    private String category;
 
     @Column
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE)
+    private List<PurchaseRequest> purchaseRequests;
 }

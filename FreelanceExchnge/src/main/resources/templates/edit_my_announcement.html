@@ -18,6 +18,25 @@
                 <td><input type="text" th:field="*{name}"  placeholder="Измените название"/></td>
             </tr>
             <tr>
+                <td>Категория:</td>
+                <td>
+                    <select th:field="*{category}">
+                        <option value="">Выберите категорию</option>
+                        <option value="Backend">Backend</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Верстка">Верстка</option>
+                        <option value="Нейросети">Нейросети</option>
+                        <option value="Android-dev">Мобильная разработка</option>
+                        <option value="Базы данных">Базы данных</option>
+                        <option value="Системное программирование">Системное программирование</option>
+                        <option value="ИБ">Информационная безопасность</option>
+                        <option value="Тестирование">Тестирование</option>
+                        <option value="DevOps">DevOps</option>
+                        <option value="AI">Искусственный интеллект</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td>Описание:</td>
                 <td><input type="text" th:field="*{description}" placeholder="Измените описание"/></td>
             </tr>

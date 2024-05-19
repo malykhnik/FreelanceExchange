@@ -2,6 +2,7 @@ package com.malykhnik.freelanceexchnge.controller.entity;
 
 import com.malykhnik.freelanceexchnge.model.EventCatcher;
 import com.malykhnik.freelanceexchnge.model.FreelanceAnnouncement;
+import com.malykhnik.freelanceexchnge.model.Order;
 import com.malykhnik.freelanceexchnge.service.AnnouncementService;
 import com.malykhnik.freelanceexchnge.service.EventCatcherService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,19 @@ import java.util.stream.Collectors;
 public class AnnouncementController {
     private final AnnouncementService announcementService;
     private final EventCatcherService eventCatcherService;
+
+    @GetMapping("/announcementInfo/{id}")
+    public String orderInfo(@PathVariable Long id, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
+        Optional<FreelanceAnnouncement> announcementOptional = announcementService.findAnnouncementById(id);
+        if (announcementOptional.isPresent()) {
+            FreelanceAnnouncement announcement = announcementOptional.get();
+            model.addAttribute("announcement", announcement);
+        }
+        return "announcement_info";
+    }
 
     @GetMapping("/newService")
     public String createNewAnnouncement(Model model) {
