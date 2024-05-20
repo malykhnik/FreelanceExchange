@@ -9,6 +9,7 @@ import com.malykhnik.freelanceexchnge.service.OrderService;
 import com.malykhnik.freelanceexchnge.service.PurchaseRequestService;
 import com.malykhnik.freelanceexchnge.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -119,6 +120,9 @@ public class PurchaseRequestController {
 
     @GetMapping("/requestCustomer")
     public String getRequestCustomer(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
         ArrayList<PurchaseRequest> requests = (ArrayList<PurchaseRequest>) getRequestsByCurrentUser();
         model.addAttribute("requests", requests);
 
@@ -141,7 +145,7 @@ public class PurchaseRequestController {
     @GetMapping("/rejectRequest/{id}")
     public String rejectRequest(@PathVariable(name = "id") Long id)  {
         Optional<PurchaseRequest> requestOptional = requestService.findById(id);
-        if (findRole() == 1) {
+        if (findRole() == 1) { //если кастомер
             if (requestOptional.isPresent()) {
                 PurchaseRequest request = requestOptional.get();
                 requestService.deleteRequest(request);
@@ -152,6 +156,9 @@ public class PurchaseRequestController {
 
     @GetMapping("/tasksFreelancer")
     public String tasksFreelancer(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        model.addAttribute("user_name", name);
         List<PurchaseRequest> tasksFr = requestService.getAllRequestsByFreelancerWithStatus(getUsernameFromContext(), "Accepted");
         List<PurchaseRequest> tasksFromCustomer = requestService.getRequestsFromCustomer(getUsernameFromContext(), "Waiting");
         tasksFr.addAll(tasksFromCustomer);

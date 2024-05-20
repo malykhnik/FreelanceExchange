@@ -4,31 +4,44 @@
     <meta charset="UTF-8">
     <title>Tasks</title>
     <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/customer_requests.css"/>
 </head>
 <body>
 
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container">
-    <ul>
-        <li th:each="task: ${tasks_fr}">
-            <div class="product">
-                <table border="1" cellpadding="5">
-                    <tr>
-                        <td><span th:text="${task.userTo.name}"></span></td>
-                        <td><span th:text="${task.order.orderName}"></span></td>
-                        <td><span th:text="${task.status}"></span></td>
-<!--                        <td><a th:href="@{/acceptRequest/{id}(id=${request.id})}">-->
-<!--                            <img class="img_req" src="/images/accept.png">-->
-<!--                        </a></td>-->
-<!--                        <td><a th:href="@{/rejectRequest/{id}(id=${request.id})}">-->
-<!--                            <img class="img_req" src="/images/reject.png">-->
-<!--                        </a></td>-->
-                    </tr>
-                </table>
+    <div class="block">
+        <h2>Ваши запросы</h2>
+        <div class="row">
+            <div th:each="request: ${tasks_fr}">
+                <div class="card">
+                    <div class="options">
+                        <span class="user_from_name" th:text="${request.userFrom.name}"></span>
+                    </div>
+                    <div class="options">
+                        <span class="status" th:text="${request.status}"></span>
+                    </div>
+                    <div class="options">
+                        <span class="order_name" th:text="${request.order.orderName}"></span>
+                    </div>
+
+                    <div class="img_reject">
+                        <a th:href="@{/rejectRequest/{id}(id=${request.id})}">
+                            <img class="img_req" src="/images/reject.png">
+                        </a>
+                    </div>
+                    <div class="img_accept">
+                        <a th:href="@{/acceptRequest/{id}(id=${request.id})}">
+                            <img class="img_req" src="/images/accept.png">
+                        </a>
+                    </div>
+
+                </div>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+
 </div>
 
 </body>

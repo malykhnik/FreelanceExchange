@@ -129,7 +129,7 @@ h2 {
 .img_delete {
     position: absolute;
     border-radius: 50%;
-    right: 0;
+    right: 5%;
     top: 15%;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -148,7 +148,7 @@ h2 {
 
 .img_edit {
     position: absolute;
-    right: 0;
+    right: 5%;
     top: 30%;
     opacity: 0;
     transition: opacity 0.3s ease;
